@@ -1,0 +1,8 @@
+<button [ngClass]="calculateClasses()">
+    <ng-template [ngIf]="tile.uncovered" [ngIfElse]="covered">
+        <ng-template [ngIf]="tile.mines">*</ng-template>
+        <ng-template [ngIf]="!tile.mines && tile.around" [ngIfElse]="empty" #around>{{tile.around}}</ng-template>
+        <ng-template #empty></ng-template>
+    </ng-template>
+    <ng-template #covered>~</ng-template>
+</button>
