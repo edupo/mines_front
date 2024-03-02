@@ -16,5 +16,16 @@
       "preLaunchTask": "npm: test",
       "url": "http://localhost:9876/debug.html"
     },
+    {
+      "name": "server",
+      "type": "go",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/server/main",
+      "mode": "auto",
+      "output": "mines_server_debug",
+      "env": {
+        "PORT": "4201"
+      }
+    }
   ]
 }
