@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgIf, NgClass } from '@angular/common';
 
-import { MinesTile } from '../shared/mines.models';
+import { MinesService } from '../shared/mines.service';
+import { MinesTile, MinesCommand, MinesBoard } from '../shared/mines.models';
 
 @Component({
   selector: 'mines-tile',
@@ -17,6 +18,18 @@ export class TileComponent {
     mines: 0,
     flags: 0,
     uncovered: false
+  }
+  @Output() onUpdate = new EventEmitter<MinesBoard>();
+
+  constructor(private minesService: MinesService) { }
+
+  sendCommand(action: "nothing" | "flag" | "uncover"): void {
+    console.log(action)
+    this.minesService.sendCommand({ id: this.tile.id, action: action } as MinesCommand)
+      .subscribe(
+        board => this.onUpdate.emit(board)
+      )
+
   }
 
   calculateClasses() {

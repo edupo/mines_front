@@ -1,8 +1,11 @@
-<button [ngClass]="calculateClasses()">
+<button [ngClass]="calculateClasses()" (click)="sendCommand('uncover')" (auxclick)="sendCommand('flag')">
     <ng-template [ngIf]="tile.uncovered" [ngIfElse]="covered">
         <ng-template [ngIf]="tile.mines">*</ng-template>
         <ng-template [ngIf]="!tile.mines && tile.around" [ngIfElse]="empty" #around>{{tile.around}}</ng-template>
         <ng-template #empty></ng-template>
     </ng-template>
-    <ng-template #covered>~</ng-template>
+    <ng-template #covered>
+        <ng-template [ngIf]="tile.flags" [ngIfElse]="water">P</ng-template>
+        <ng-template #water>~</ng-template>
+    </ng-template>
 </button>

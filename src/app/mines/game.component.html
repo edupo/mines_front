@@ -1,5 +1,8 @@
 <div [ngClass]="'board__wrapper'">
     <div [ngClass]="'board'" [ngStyle]="calculateStyle()">
-        <mines-tile *ngFor="let tile of board.tiles" [tile]="tile"></mines-tile>
+        <mines-tile *ngFor="let tile of board.tiles" 
+        [tile]="tile"
+        (onUpdate)="update($event)"
+        ></mines-tile>
     </div>
 </div>

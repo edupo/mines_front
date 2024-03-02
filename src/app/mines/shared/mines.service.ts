@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { MinesBoard } from './mines.models';
+import { MinesBoard, MinesCommand } from './mines.models';
 import { Observable, of, tap, map, catchError } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
@@ -23,6 +23,13 @@ export class MinesService {
         tap(_ => this.log('fetched board')),
         catchError(this.handleError<MinesBoard>('getBoard')),
       );
+  }
+
+  sendCommand(command: MinesCommand): Observable<MinesBoard> {
+    return this.httpClient.post<MinesBoard>(this.url, command, this.httpOptions).pipe(
+      tap(_ => this.log('sendCommand: new board status')),
+      catchError(this.handleError<MinesBoard>('sendCommand')),
+    )
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

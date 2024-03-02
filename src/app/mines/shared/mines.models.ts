@@ -13,3 +13,8 @@ export interface MinesBoard {
     mines: number;
     tiles: MinesTile[];
 }
+
+export interface MinesCommand {
+    id: number;
+    action: "nothing" | "flag" | "uncover";
+}

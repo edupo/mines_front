@@ -31,6 +31,10 @@ export class MinesGameComponent implements OnInit {
     this.minesService.getBoard().subscribe(board => this.board = board);
   }
 
+  update(board: MinesBoard): void {
+    this.board = board
+  }
+
   calculateStyle() {
     return {
       'grid-template-columns': `repeat(${this.board.width}, minmax(0, 1fr))`,
