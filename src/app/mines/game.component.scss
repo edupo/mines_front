@@ -1,14 +1,14 @@
 .board {
     display: grid;
     grid-gap: 1px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    // position: absolute;
+    // top: 0;
+    // bottom: 0;
+    // left: 0;
+    // right: 0;
 
     &__wrapper {
-        position: relative;
+        // position: relative;
         aspect-ratio: 1;
     }
 }

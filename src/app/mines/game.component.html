@@ -1,8 +1,8 @@
 <div [ngClass]="'board__wrapper'">
     <div [ngClass]="'board'" [ngStyle]="calculateStyle()">
-        <mines-tile *ngFor="let tile of board.tiles" 
-        [tile]="tile"
-        (onUpdate)="update($event)"
-        ></mines-tile>
+        <mines-tile *ngFor="let tile of status.tiles" [tile]="tile" (onCommand)="sendCommand($event)"></mines-tile>
     </div>
+</div>
+<div>
+    <mines-new-game-form (onSubmit)="newGame($event)"></mines-new-game-form>
 </div>

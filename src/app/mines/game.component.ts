@@ -2,18 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { NgStyle, NgClass, NgFor } from '@angular/common';
 
 import { TileComponent } from './tile/tile.component';
+import { NewGameFormComponent } from './new-game-form/new-game-form.component';
 import { MinesService } from './shared/mines.service';
-import { MinesBoard } from './shared/mines.models';
+import { MinesGameStatus, MinesGameSettings, MinesCommand } from './shared/mines.models';
 
 @Component({
   selector: 'mines-game',
   standalone: true,
-  imports: [TileComponent, NgStyle, NgClass, NgFor],
+  imports: [TileComponent, NewGameFormComponent, NgStyle, NgClass, NgFor],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss',
 })
 export class MinesGameComponent implements OnInit {
-  board: MinesBoard = {
+  status: MinesGameStatus = {
     id: 0,
     mines: 0,
     width: 0,
@@ -21,23 +22,27 @@ export class MinesGameComponent implements OnInit {
     tiles: [],
   };
 
-  constructor(private minesService: MinesService) { }
+  constructor(private service: MinesService) { }
 
   ngOnInit(): void {
-    this.getBoard();
+    this.newGame({ width: 10, height: 10, mines: 10 } as MinesGameSettings)
   }
 
-  getBoard(): void {
-    this.minesService.getBoard().subscribe(board => this.board = board);
+  newGame(settings: MinesGameSettings): void {
+    this.service
+      .newGame(settings)
+      .subscribe(new_status => this.status = new_status);
   }
 
-  update(board: MinesBoard): void {
-    this.board = board
+  sendCommand(command: MinesCommand): void {
+    this.service
+      .sendCommand(this.status, command)
+      .subscribe(new_status => this.status = new_status)
   }
 
   calculateStyle() {
     return {
-      'grid-template-columns': `repeat(${this.board.width}, minmax(0, 1fr))`,
+      'grid-template-columns': `repeat(${this.status.width}, minmax(0, 1fr))`,
     };
   }
 }

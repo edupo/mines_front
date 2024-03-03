@@ -1,0 +1,21 @@
+<form [formGroup]="newGameForm" (ngSubmit)="submit()">
+
+    <div class="control">
+        <label for="width">Width: </label>
+        <input id="width" type="number" formControlName="width">
+    </div>
+
+    <div class="control">
+        <label for="height">Height: </label>
+        <input id="hieght" type="number" formControlName="height">
+    </div>
+
+    <div class="control">
+        <label for="mines">Mines: </label>
+        <input id="mines" type="number" formControlName="mines">
+    </div>
+
+    <button type="submit" [disabled]="!newGameForm.valid">Submit</button>
+</form>
+<hr>
+<p>Form Status: {{ newGameForm.status }}</p>

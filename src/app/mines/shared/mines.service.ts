@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { MinesBoard, MinesCommand } from './mines.models';
+import { MinesGameStatus, MinesCommand, MinesGameSettings } from './mines.models';
 import { Observable, of, tap, map, catchError } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
@@ -17,18 +17,25 @@ export class MinesService {
     private httpClient: HttpClient,
   ) { }
 
-  getBoard(): Observable<MinesBoard> {
-    return this.httpClient.get<MinesBoard>(this.url)
+  newGame(settings: MinesGameSettings): Observable<MinesGameStatus> {
+    return this.httpClient.post<MinesGameStatus>(this.url, settings, this.httpOptions).pipe(
+      tap(_ => this.log('newGame')),
+      catchError(this.handleError<MinesGameStatus>('newGame')),
+    )
+  }
+
+  getGame(status: MinesGameStatus): Observable<MinesGameStatus> {
+    return this.httpClient.get<MinesGameStatus>(`${this.url}/${status.id}`)
       .pipe(
-        tap(_ => this.log('fetched board')),
-        catchError(this.handleError<MinesBoard>('getBoard')),
+        tap(_ => this.log('getGame')),
+        catchError(this.handleError<MinesGameStatus>('getBoard')),
       );
   }
 
-  sendCommand(command: MinesCommand): Observable<MinesBoard> {
-    return this.httpClient.post<MinesBoard>(this.url, command, this.httpOptions).pipe(
-      tap(_ => this.log('sendCommand: new board status')),
-      catchError(this.handleError<MinesBoard>('sendCommand')),
+  sendCommand(status: MinesGameStatus, command: MinesCommand): Observable<MinesGameStatus> {
+    return this.httpClient.post<MinesGameStatus>(`${this.url}/${status.id}`, command, this.httpOptions).pipe(
+      tap(_ => this.log(`sendCommand ${command.id}:${command.action}`)),
+      catchError(this.handleError<MinesGameStatus>('sendCommand')),
     )
   }
 
