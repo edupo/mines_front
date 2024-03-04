@@ -14,11 +14,11 @@
         aspect-ratio: 1;
 
         &__covered {
-            background-color: var(--color_dark_blue);
+            background-color: var(--color_grey_d5);
         }
 
         &__uncovered {
-            background-color: var(--color_blue);
+            background-color: var(--color_grey_d4);
         }
 
         &__mine {
@@ -28,39 +28,39 @@
         &__color {
 
             &__r1 {
-                @include coloredTile(var(--color_ramp1));
+                @include coloredTile(var(--color_grey_d3));
             }
 
             &__r2 {
-                @include coloredTile(var(--color_ramp2));
+                @include coloredTile(var(--color_grey_d2));
             }
 
             &__r3 {
-                @include coloredTile(var(--color_ramp3));
+                @include coloredTile(var(--color_grey_d1));
             }
 
             &__r4 {
-                @include coloredTile(var(--color_ramp4));
+                @include coloredTile(var(--color_grey));
             }
 
             &__r5 {
-                @include coloredTile(var(--color_ramp5));
+                @include coloredTile(var(--color_grey_l1));
             }
 
             &__r6 {
-                @include coloredTile(var(--color_ramp6));
+                @include coloredTile(var(--color_grey_l2));
             }
 
             &__r7 {
-                @include coloredTile(var(--color_ramp7));
+                @include coloredTile(var(--color_grey_l3));
             }
 
             &__r8 {
-                @include coloredTile(var(--color_ramp8));
+                @include coloredTile(var(--color_grey_l4));
             }
 
             &__r9 {
-                @include coloredTile(var(--color_ramp9));
+                @include coloredTile(var(--color_grey_l5));
             }
         }
     }
