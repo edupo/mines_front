@@ -13,15 +13,35 @@ export class NewGameFormComponent {
   @Output() onSubmit = new EventEmitter<MinesGameSettings>();
 
   newGameForm = this.formBuilder.group({
-    width: [10, [Validators.min(1), Validators.max(20)]],
-    height: [10, [Validators.min(1), Validators.max(20)]],
+    width: [10, [Validators.min(1), Validators.max(30)]],
+    height: [10, [Validators.min(1), Validators.max(30)]],
     mines: [10, [Validators.min(1), Validators.max(100)]],
   })
 
+  settings = {
+    easy: { width: 8, height: 8, mines: 10 } as MinesGameSettings,
+    medium: { width: 13, height: 15, mines: 40 } as MinesGameSettings,
+    hard: { width: 16, height: 30, mines: 99 } as MinesGameSettings,
+  }
+
   constructor(private formBuilder: FormBuilder) { }
 
-  submit() {
-    var value = this.newGameForm.value
-    this.onSubmit.emit({ width: value.width, height: value.height, mines: value.mines } as MinesGameSettings);
+  submit(level: string = '') {
+    var _settings: MinesGameSettings
+    switch (level) {
+      case 'custom':
+        var value = this.newGameForm.value
+        _settings = { width: value.width, height: value.height, mines: value.mines } as MinesGameSettings
+        break;
+      case 'easy':
+      case 'medium':
+      case 'hard':
+        _settings = this.settings[level]
+        break;
+      default:
+        _settings = this.settings['easy']
+        break;
+    }
+    this.onSubmit.emit(_settings);
   }
 }

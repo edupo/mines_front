@@ -26,6 +26,7 @@ export class TileComponent {
 
   calculateClasses() {
     return {
+      'fill': true,
       'mines__tile': true,
       'mines__tile__covered': !this.tile.uncovered,
       'mines__tile__uncovered': this.tile.uncovered,

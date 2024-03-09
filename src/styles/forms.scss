@@ -1,0 +1,54 @@
+@import "variables";
+
+form {}
+
+input {
+    padding: $padding;
+    background-color: var(--color_secondary);
+    width: 100%;
+}
+
+label {
+    padding: $padding;
+    background-color: var(--color_secondary);
+}
+
+button {
+    padding: $padding;
+    color: var(--color_main_text);
+    background-color: var(--color_main);
+    border-radius: $radius;
+    border: $border;
+    cursor: pointer;
+    width: 100%;
+
+    &:hover {
+        filter: brightness(1.15);
+    }
+
+    &:disabled {
+        background-color: var(--color_disabled);
+        color: var(--color_text_disabled);
+        cursor: auto;
+    }
+}
+
+.control {
+    display: flex;
+
+    >input {
+        border-top-right-radius: $radius;
+        border-bottom-right-radius: $radius;
+        border-right: $border;
+        border-top: $border;
+        border-bottom: $border;
+    }
+
+    >label {
+        border-left: $border;
+        border-top: $border;
+        border-bottom: $border;
+        border-top-left-radius: $radius;
+        border-bottom-left-radius: $radius;
+    }
+}

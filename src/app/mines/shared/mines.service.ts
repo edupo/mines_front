@@ -27,14 +27,14 @@ export class MinesService {
   getGame(status: MinesGameStatus): Observable<MinesGameStatus> {
     return this.httpClient.get<MinesGameStatus>(`${this.url}/${status.id}`)
       .pipe(
-        tap(_ => this.log('getGame')),
+        // tap(_ => this.log('getGame')),
         catchError(this.handleError<MinesGameStatus>('getBoard')),
       );
   }
 
   sendCommand(status: MinesGameStatus, command: MinesCommand): Observable<MinesGameStatus> {
     return this.httpClient.post<MinesGameStatus>(`${this.url}/${status.id}`, command, this.httpOptions).pipe(
-      tap(_ => this.log(`sendCommand ${command.id}:${command.action}`)),
+      // tap(_ => this.log(`sendCommand ${command.id}:${command.action}`)),
       catchError(this.handleError<MinesGameStatus>('sendCommand')),
     )
   }

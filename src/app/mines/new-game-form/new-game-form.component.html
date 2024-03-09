@@ -1,4 +1,9 @@
-<form [formGroup]="newGameForm" (ngSubmit)="submit()">
+<div class="flex__row flex__spaced margin__top">
+    <button type="submit" (click)="submit('easy')">Easy</button>
+    <button type="submit" (click)="submit('medium')">Medium</button>
+    <button type="submit" (click)="submit('hard')">Hard</button>
+</div>
+<form class="flex__row flex__spaced margin__vertical" [formGroup]="newGameForm" (ngSubmit)="submit('custom')">
 
     <div class="control">
         <label for="width">Width: </label>
@@ -7,7 +12,7 @@
 
     <div class="control">
         <label for="height">Height: </label>
-        <input id="hieght" type="number" formControlName="height">
+        <input id="height" type="number" formControlName="height">
     </div>
 
     <div class="control">
@@ -17,5 +22,3 @@
 
     <button type="submit" [disabled]="!newGameForm.valid">Submit</button>
 </form>
-<hr>
-<p>Form Status: {{ newGameForm.status }}</p>

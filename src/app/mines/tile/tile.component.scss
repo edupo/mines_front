@@ -1,66 +1,66 @@
+@import "variables";
+
 @mixin coloredTile ($color) {
     background-color: $color;
-    color: var(--color_white);
+    color: var(--white);
 }
 
 .mines {
     &__tile {
         background-color: var(--color-main);
         border: none;
-        border-radius: 6px;
+        border-radius: $radius;
         cursor: pointer;
-        width: 100%;
-        height: 100%;
         aspect-ratio: 1;
 
         &__covered {
-            background-color: var(--color_grey_d5);
+            background-color: var(--grey_d5);
         }
 
         &__uncovered {
-            background-color: var(--color_grey_d4);
+            background-color: var(--grey_d4);
         }
 
         &__mine {
-            background-color: var(--color_electric_red);
+            background-color: $electric_red;
         }
 
         &__color {
 
             &__r1 {
-                @include coloredTile(var(--color_grey_d3));
+                @include coloredTile(var(--grey_d3));
             }
 
             &__r2 {
-                @include coloredTile(var(--color_grey_d2));
+                @include coloredTile(var(--grey_d2));
             }
 
             &__r3 {
-                @include coloredTile(var(--color_grey_d1));
+                @include coloredTile(var(--grey_d1));
             }
 
             &__r4 {
-                @include coloredTile(var(--color_grey));
+                @include coloredTile(var(--grey));
             }
 
             &__r5 {
-                @include coloredTile(var(--color_grey_l1));
+                @include coloredTile(var(--grey_l1));
             }
 
             &__r6 {
-                @include coloredTile(var(--color_grey_l2));
+                @include coloredTile(var(--grey_l2));
             }
 
             &__r7 {
-                @include coloredTile(var(--color_grey_l3));
+                @include coloredTile(var(--grey_l3));
             }
 
             &__r8 {
-                @include coloredTile(var(--color_grey_l4));
+                @include coloredTile(var(--grey_l4));
             }
 
             &__r9 {
-                @include coloredTile(var(--color_grey_l5));
+                @include coloredTile(var(--grey_l5));
             }
         }
     }
