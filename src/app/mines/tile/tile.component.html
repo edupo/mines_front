@@ -5,7 +5,11 @@
         <ng-template #empty></ng-template>
     </ng-template>
     <ng-template #covered>
-        <ng-template [ngIf]="tile.flags" [ngIfElse]="water">P</ng-template>
+        <ng-template [ngIf]="tile.flags" [ngIfElse]="water">
+            <div [className]="'waves'">
+                <img [classList]="['flag floating']" src="assets/flag.svg">
+            </div>
+        </ng-template>
         <ng-template #water>~</ng-template>
     </ng-template>
 </button>

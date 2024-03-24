@@ -5,6 +5,59 @@
     color: var(--white);
 }
 
+.flag {
+    height: 100%;
+}
+
+@keyframes floating {
+    from {
+        transform: translate(0, 0%) rotate(20deg);
+    }
+
+    25% {
+        transform: translate(0, 10%) rotate(-20deg);
+    }
+
+    50% {
+        transform: translate(0, 0%) rotate(17deg);
+    }
+
+    75% {
+        transform: translate(0, 15%) rotate(-15deg);
+    }
+
+    to {
+        transform: translate(0, 0%) rotate(20deg);
+    }
+}
+
+.floating {
+    animation: floating 10s ease-in-out infinite;
+}
+
+@keyframes waves {
+    from {
+        mask-position: 0px;
+    }
+
+    50% {
+        mask-position: 100px;
+    }
+
+    to {
+        mask-position: 0px;
+    }
+}
+
+.waves {
+    margin-top: 20%;
+    height: 80%;
+    mask-image: url('/assets/waves.svg');
+    mask-size: 100%;
+    animation: waves 7s ease-in-out infinite;
+}
+
+
 .mines {
     &__tile {
         background-color: var(--color-main);

@@ -3,9 +3,9 @@
 @import "variables";
 
 :root {
-  --min: 18%;
+  --min: 14%;
   --max: 91%;
-  --sat: 10%;
+  --sat: 2%;
   --hue: 44;
 
   --step: calc((var(--max) - var(--min))/12);
