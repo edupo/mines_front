@@ -1,6 +1,8 @@
 # Mines
 
-Server is launched with `gin` automatically when VScode opens the workspace.
+A mines game server frontend made to learn angular. Backend is written in Go
+and currently is not public even though you may find a very early version in 
+this repository history ;)
 
 Run the `ng serve` launch to get the frontend.
 
