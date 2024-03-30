@@ -1,15 +1,23 @@
 <button [ngClass]="calculateClasses()" (click)="sendCommand('uncover')" (auxclick)="sendCommand('flag')">
     <ng-template [ngIf]="tile.uncovered" [ngIfElse]="covered">
-        <ng-template [ngIf]="tile.mines">*</ng-template>
+        <ng-template [ngIf]="tile.mines">
+            <div [className]="'waves'">
+                <img class="icon mine floating" src="assets/mine.svg" [ngStyle]="{'animation-delay.s': delay() }">
+            </div>
+        </ng-template>
         <ng-template [ngIf]="!tile.mines && tile.around" [ngIfElse]="empty" #around>{{tile.around}}</ng-template>
         <ng-template #empty></ng-template>
     </ng-template>
     <ng-template #covered>
         <ng-template [ngIf]="tile.flags" [ngIfElse]="water">
-            <div [className]="'waves'">
-                <img [classList]="['flag floating']" src="assets/flag.svg">
+            <div class="waves">
+                <img class="icon floating" src="assets/flag.svg">
             </div>
         </ng-template>
-        <ng-template #water>~</ng-template>
+        <ng-template #water>
+            <div class="waves rotated">
+                <img class="icon" src="assets/water.svg">
+            </div>
+        </ng-template>
     </ng-template>
 </button>

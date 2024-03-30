@@ -45,4 +45,8 @@ export class MinesGameComponent implements OnInit {
       'grid-template-columns': `repeat(${this.status.width}, minmax(0, 1fr))`,
     };
   }
+
+  trackById(index: Number, item: any) {
+    return item.id;
+  }
 }

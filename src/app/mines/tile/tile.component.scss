@@ -5,29 +5,37 @@
     color: var(--white);
 }
 
-.flag {
+.icon {
     height: 100%;
+}
+
+.mine {
+    height: 80%;
+}
+
+.rotated {
+    transform: rotate(180deg);
 }
 
 @keyframes floating {
     from {
-        transform: translate(0, 0%) rotate(20deg);
+        transform: translate(0, 10%) rotate(20deg);
     }
 
     25% {
-        transform: translate(0, 10%) rotate(-20deg);
+        transform: translate(0, 20%) rotate(-20deg);
     }
 
     50% {
-        transform: translate(0, 0%) rotate(17deg);
+        transform: translate(0, 10%) rotate(17deg);
     }
 
     75% {
-        transform: translate(0, 15%) rotate(-15deg);
+        transform: translate(0, 25%) rotate(-15deg);
     }
 
     to {
-        transform: translate(0, 0%) rotate(20deg);
+        transform: translate(0, 10%) rotate(20deg);
     }
 }
 
@@ -40,21 +48,18 @@
         mask-position: 0px;
     }
 
-    50% {
-        mask-position: 100px;
-    }
-
     to {
-        mask-position: 0px;
+        mask-position: 100px;
     }
 }
 
 .waves {
-    margin-top: 20%;
-    height: 80%;
+    height: 100%;
     mask-image: url('/assets/waves.svg');
-    mask-size: 100%;
-    animation: waves 7s ease-in-out infinite;
+    mask-size: 105%;
+    mask-repeat: repeat-x;
+    animation: waves 14s linear infinite;
+    overflow: hidden;
 }
 
 

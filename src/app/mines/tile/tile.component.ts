@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { NgIf, NgClass } from '@angular/common';
+import { NgIf, NgClass, NgStyle } from '@angular/common';
 
 import { MinesTileStatus, MinesCommand } from '../shared/mines.models';
 
 @Component({
   selector: 'mines-tile',
   standalone: true,
-  imports: [NgIf, NgClass],
+  imports: [NgIf, NgClass, NgStyle],
   templateUrl: './tile.component.html',
   styleUrl: './tile.component.scss'
 })
@@ -41,5 +41,9 @@ export class TileComponent {
       'mines__tile__color__r8': !this.tile.mines && this.tile.around == 8,
       'mines__tile__color__r9': !this.tile.mines && this.tile.around > 9,
     }
+  }
+
+  delay() {
+    return String(- (Math.random() * 10) + 1);
   }
 }
